@@ -1,4 +1,11 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import configparser
+configfile = configparser.ConfigParser()
+configfile.read("settings.conf")
+
+t = configfile.get("telegram", "token")
+
+TOKEN = t
 
 
 def start(bot, update):
@@ -11,7 +18,7 @@ def convert_uppercase(bot, update):
 
 def main():
     # Create Updater object and attach dispatcher to it
-    updater = Updater('852364210:AAFpMjKjotCfeQTd4uVG02WfbEUuTxY8R4g')
+    updater = Updater('t')
     dispatcher = updater.dispatcher
     print("Bot started")
 

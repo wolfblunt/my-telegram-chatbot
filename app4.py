@@ -3,13 +3,20 @@ import requests
 import time
 import urllib
 
-import config
 from dbhelper import DBHelper
+import configparser
+
+configfile = configparser.ConfigParser()
+configfile.read("settings.conf")
+
+t = configfile.get("telegram", "token")
+u = configfile.get("telegram", "url")
+
+TOKEN = t
+URL ="{}{}/".format(u,t)
 
 db = DBHelper()
 
-TOKEN = '852364210:AAFpMjKjotCfeQTd4uVG02WfbEUuTxY8R4g'
-URL = "https://api.telegram.org/bot{}/".format(TOKEN)
 
 
 def get_url(url):
